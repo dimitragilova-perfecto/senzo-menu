@@ -1,559 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#eee2cf"
+  >
 
   <title>SENZO — Neapolitan Pizzeria</title>
 
   <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-  <!-- =========================
-       DIGITAL MENU
-  ========================== -->
 
-  <main class="menu-book">
-
-    <!-- HEADER -->
-
-    <header class="menu-header">
-
-      <div class="small-title">
-        NEAPOLITAN PIZZERIA
-      </div>
-
-      <h1>SENZO</h1>
-
-      <div class="italian-line">
-        CUCINA ITALIANA
-      </div>
-
-    </header>
+  <main class="book">
 
 
-    <!-- CATEGORY NAVIGATION -->
+    <!-- MENU BOOK -->
 
-    <nav class="menu-navigation">
+    <div class="book-stage" id="bookStage">
 
-      <button class="category-button active" data-category="food">
-        MENU
+
+      <!-- LEFT ARROW -->
+
+      <button
+        class="arrow arrow-left"
+        id="prev"
+        aria-label="Previous menu page"
+      >
+
+        ‹
+
       </button>
 
-      <button class="category-button" data-category="drinks">
-        DRINKS
+
+      <!-- CURRENT PAGE -->
+
+      <div class="page" id="page">
+
+        <img
+          id="menuImage"
+          src="menu-food.jpg"
+          alt="SENZO food menu"
+        >
+
+      </div>
+
+
+      <!-- RIGHT ARROW -->
+
+      <button
+        class="arrow arrow-right"
+        id="next"
+        aria-label="Next menu page"
+      >
+
+        ›
+
       </button>
 
-      <button class="category-button" data-category="desserts">
-        DOLCI
-      </button>
 
-    </nav>
+    </div>
 
 
-    <!-- =========================
-         FOOD MENU
-    ========================== -->
 
-    <section id="food" class="menu-page active-page">
+    <!-- PAGE INDICATORS -->
 
-      <div class="menu-columns">
+    <div class="book-controls">
 
-        <!-- LEFT COLUMN -->
 
-        <div class="menu-column">
+      <button
+        class="dot active"
+        data-page="0"
+        aria-label="Food menu"
+      ></button>
 
-          <div class="menu-section">
 
-            <h2>ANTIPASTI</h2>
+      <button
+        class="dot"
+        data-page="1"
+        aria-label="Drinks menu"
+      ></button>
 
-            <button class="dish">
-              <span>
-                <strong>Burrata e Pomodorini</strong>
-                <small>Burrata, cherry tomatoes</small>
-              </span>
 
-              <span class="price">€9.50</span>
-            </button>
+      <button
+        class="dot"
+        data-page="2"
+        aria-label="Desserts menu"
+      ></button>
 
 
-            <button class="dish">
-              <span>
-                <strong>Tagliere Italiano</strong>
-                <small>Selection of Italian cured meats & cheeses</small>
-              </span>
-
-              <span class="price">€12</span>
-            </button>
-
-
-            <button class="dish">
-              <span>
-                <strong>Bruschetta al Pomodoro</strong>
-                <small>Tomato, basil & extra virgin olive oil</small>
-              </span>
-
-              <span class="price">€4.50</span>
-            </button>
-
-
-            <button class="dish">
-              <span>
-                <strong>Arancini</strong>
-                <small>Sicilian rice croquettes</small>
-              </span>
-
-              <span class="price">€6.50</span>
-            </button>
-
-
-            <button class="dish">
-              <span>
-                <strong>Caprese di Bufala</strong>
-                <small>Buffalo mozzarella, tomato & basil</small>
-              </span>
-
-              <span class="price">€9</span>
-            </button>
-
-          </div>
-
-
-          <div class="menu-section">
-
-            <h2>FOCACCIA</h2>
-
-            <button class="dish">
-              <span>
-                <strong>Focaccia Classica</strong>
-                <small>Rosemary, sea salt & olive oil</small>
-              </span>
-
-              <span class="price">€6</span>
-            </button>
-
-          </div>
-
-
-          <div class="menu-section">
-
-            <h2>INSALATE</h2>
-
-            <button class="dish">
-              <span>
-                <strong>Insalata Italiana</strong>
-                <small>Fresh seasonal Italian vegetables</small>
-              </span>
-
-              <span class="price">€9</span>
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <!-- RIGHT COLUMN -->
-
-        <div class="menu-column">
-
-          <div class="menu-section pizza-section">
-
-            <h2>PIZZA NAPOLETANA</h2>
-
-            <p class="section-note">
-              48h fermented dough · San Marzano tomatoes
-            </p>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="Margherita">
-
-              <span>
-                <strong>Margherita</strong>
-                <small>Tomato, fior di latte, basil</small>
-              </span>
-
-              <span class="price">€12</span>
-
-            </button>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="Marinara">
-
-              <span>
-                <strong>Marinara</strong>
-                <small>Tomato, garlic, oregano</small>
-              </span>
-
-              <span class="price">€7.50</span>
-
-            </button>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="Diavola">
-
-              <span>
-                <strong>Diavola</strong>
-                <small>Tomato, mozzarella, spicy salami</small>
-              </span>
-
-              <span class="price">€10.50</span>
-
-            </button>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="Quattro Formaggi">
-
-              <span>
-                <strong>Quattro Formaggi</strong>
-                <small>Selection of four Italian cheeses</small>
-              </span>
-
-              <span class="price">€11</span>
-
-            </button>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="Capricciosa">
-
-              <span>
-                <strong>Capricciosa</strong>
-                <small>Ham, mushrooms, artichokes & olives</small>
-              </span>
-
-              <span class="price">€11</span>
-
-            </button>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="Napoli">
-
-              <span>
-                <strong>Napoli</strong>
-                <small>Anchovies, capers & olives</small>
-              </span>
-
-              <span class="price">€10.50</span>
-
-            </button>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="Prosciutto e Funghi">
-
-              <span>
-                <strong>Prosciutto e Funghi</strong>
-                <small>Italian ham & mushrooms</small>
-              </span>
-
-              <span class="price">€10.50</span>
-
-            </button>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="Burrata e Crudo">
-
-              <span>
-                <strong>Burrata e Crudo</strong>
-                <small>Burrata & prosciutto crudo</small>
-              </span>
-
-              <span class="price">€14.50</span>
-
-            </button>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="Mortadella e Pistacchio">
-
-              <span>
-                <strong>Mortadella e Pistacchio</strong>
-                <small>Mortadella, pistachio & cream</small>
-              </span>
-
-              <span class="price">€14</span>
-
-            </button>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="Salsiccia e Friarielli">
-
-              <span>
-                <strong>Salsiccia e Friarielli</strong>
-                <small>Italian sausage & friarielli</small>
-              </span>
-
-              <span class="price">€13</span>
-
-            </button>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="Bosco al Tartufo">
-
-              <span>
-                <strong>Bosco al Tartufo</strong>
-                <small>Mushrooms & truffle</small>
-              </span>
-
-              <span class="price">€14.50</span>
-
-            </button>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="'Nduja e Burrata">
-
-              <span>
-                <strong>'Nduja e Burrata</strong>
-                <small>Spicy 'nduja & burrata</small>
-              </span>
-
-              <span class="price">€14</span>
-
-            </button>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="Zucca e Gorgonzola">
-
-              <span>
-                <strong>Zucca e Gorgonzola</strong>
-                <small>Pumpkin & Gorgonzola</small>
-              </span>
-
-              <span class="price">€12.50</span>
-
-            </button>
-
-
-            <button class="dish pizza-dish"
-                    data-pizza="Pesto e Stracciatella">
-
-              <span>
-                <strong>Pesto e Stracciatella</strong>
-                <small>Fresh pesto & stracciatella</small>
-              </span>
-
-              <span class="price">€12.50</span>
-
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         DRINKS
-    ========================== -->
-
-    <section id="drinks" class="menu-page">
-
-      <div class="single-menu-page">
-
-        <h2>BEVANDE</h2>
-
-        <p class="page-subtitle">
-          DRINKS · VINO · COCKTAILS · CAFFÈ
-        </p>
-
-        <div class="coming-section">
-
-          <p>
-            Our drinks selection
-          </p>
-
-          <span>
-            Select from the categories above
-          </span>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         DESSERTS
-    ========================== -->
-
-    <section id="desserts" class="menu-page">
-
-      <div class="single-menu-page">
-
-        <h2>DOLCI</h2>
-
-        <p class="page-subtitle">
-          A LITTLE SWEETNESS TO FINISH
-        </p>
-
-
-        <button class="dish dessert-dish">
-
-          <span>
-            <strong>Tiramisu</strong>
-            <small>Classic Italian coffee & mascarpone</small>
-          </span>
-
-          <span class="price">€6</span>
-
-        </button>
-
-
-        <button class="dish dessert-dish">
-
-          <span>
-            <strong>Panna Cotta</strong>
-            <small>Silky Italian cream dessert</small>
-          </span>
-
-          <span class="price">€5</span>
-
-        </button>
-
-
-        <button class="dish dessert-dish">
-
-          <span>
-            <strong>Cannoli Siciliani</strong>
-            <small>Sicilian pastry with sweet ricotta</small>
-          </span>
-
-          <span class="price">€5.50</span>
-
-        </button>
-
-
-        <button class="dish dessert-dish">
-
-          <span>
-            <strong>Torta Caprese</strong>
-            <small>Chocolate & almond cake</small>
-          </span>
-
-          <span class="price">€6</span>
-
-        </button>
-
-
-        <button class="dish dessert-dish">
-
-          <span>
-            <strong>Affogato</strong>
-            <small>Espresso & gelato</small>
-          </span>
-
-          <span class="price">€4.50</span>
-
-        </button>
-
-
-        <button class="dish dessert-dish">
-
-          <span>
-            <strong>Gelato</strong>
-            <small>Italian artisan gelato</small>
-          </span>
-
-          <span class="price">€4</span>
-
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-      <div class="footer-decoration">
-        ✦
-      </div>
-
-      <strong>SENZO</strong>
-
-      <span>
-        NEAPOLITAN PIZZERIA
+      <span
+        class="page-number"
+        id="pageNumber"
+      >
+        01 / 03
       </span>
 
-    </footer>
+
+    </div>
+
+
+
+    <!-- SMALL INSTRUCTION -->
+
+    <p
+      class="hint"
+      id="hint"
+    >
+      USE THE ARROWS TO TURN THE MENU
+    </p>
+
 
   </main>
 
 
-  <!-- =========================
-       PIZZA DETAIL SCREEN
-  ========================== -->
-
-  <div id="pizza-detail"
-       class="pizza-detail">
-
-    <button id="close-detail"
-            class="close-detail">
-
-      ← MENU
-
-    </button>
-
-
-    <div class="detail-inner">
-
-      <p class="detail-label">
-        PIZZA NAPOLETANA
-      </p>
-
-      <h2 id="detail-name">
-        Margherita
-      </h2>
-
-
-      <div class="detail-line"></div>
-
-
-      <img id="detail-image"
-           class="detail-image"
-           src=""
-           alt="">
-
-
-      <p id="detail-description"
-         class="detail-description">
-      </p>
-
-
-      <div id="detail-price"
-           class="detail-price">
-      </div>
-
-
-      <p class="detail-note">
-        FATTA CON AMORE
-      </p>
-
-    </div>
-
-  </div>
-
-
   <script src="script.js"></script>
 
+
 </body>
+
 </html>
