@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -10,76 +9,51 @@
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   >
 
-  <meta
-    name="theme-color"
-    content="#eee2cf"
-  >
+  <meta name="theme-color" content="#eee2cf">
 
   <title>SENZO — Neapolitan Pizzeria</title>
 
   <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
-
   <main class="book">
 
-
-    <!-- MENU BOOK -->
-
     <div class="book-stage" id="bookStage">
-
-
-      <!-- LEFT ARROW -->
 
       <button
         class="arrow arrow-left"
         id="prev"
         aria-label="Previous menu page"
       >
-
         ‹
-
       </button>
 
-
-      <!-- CURRENT PAGE -->
 
       <div class="page" id="page">
 
         <img
           id="menuImage"
-          src="menu-food.jpg"
+          src="foods.jpeg"
           alt="SENZO food menu"
         >
 
       </div>
 
 
-      <!-- RIGHT ARROW -->
-
       <button
         class="arrow arrow-right"
         id="next"
         aria-label="Next menu page"
       >
-
         ›
-
       </button>
-
 
     </div>
 
 
-
-    <!-- PAGE INDICATORS -->
-
     <div class="book-controls">
-
 
       <button
         class="dot active"
@@ -87,20 +61,17 @@
         aria-label="Food menu"
       ></button>
 
-
       <button
         class="dot"
         data-page="1"
         aria-label="Drinks menu"
       ></button>
 
-
       <button
         class="dot"
         data-page="2"
         aria-label="Desserts menu"
       ></button>
-
 
       <span
         class="page-number"
@@ -109,26 +80,17 @@
         01 / 03
       </span>
 
-
     </div>
 
 
-
-    <!-- SMALL INSTRUCTION -->
-
-    <p
-      class="hint"
-      id="hint"
-    >
+    <p class="hint" id="hint">
       USE THE ARROWS TO TURN THE MENU
     </p>
-
 
   </main>
 
 
   <script src="script.js"></script>
-
 
 </body>
 
