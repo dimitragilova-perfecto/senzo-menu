@@ -1,370 +1,465 @@
-/* =========================
-   CATEGORY NAVIGATION
-========================= */
-
-const categoryButtons =
-  document.querySelectorAll(".category-button");
-
-const menuPages =
-  document.querySelectorAll(".menu-page");
+/* =========================================
+   SENZO DIGITAL MENU
+   PAGE DATA
+========================================= */
 
 
-categoryButtons.forEach(button => {
+const pages = [
 
-  button.addEventListener("click", () => {
-
-    const category =
-      button.dataset.category;
-
-
-    /* Remove active */
-
-    categoryButtons.forEach(btn => {
-
-      btn.classList.remove("active");
-
-    });
-
-
-    /* Activate clicked */
-
-    button.classList.add("active");
-
-
-    /* Hide every page */
-
-    menuPages.forEach(page => {
-
-      page.classList.remove("active-page");
-
-    });
-
-
-    /* Show selected */
-
-    document
-      .getElementById(category)
-      .classList.add("active-page");
-
-  });
-
-});
-
-
-
-/* =========================
-   PIZZA DATA
-========================= */
-
-const pizzas = {
-
-  "Margherita": {
-
-    image:
-      "https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1000&q=90",
-
-    description:
-      "San Marzano tomatoes, fior di latte mozzarella, fresh basil and extra virgin olive oil.",
-
-    price:
-      "€12"
-
+  {
+    image: "menu-food.jpg",
+    alt: "SENZO food menu"
   },
 
-
-  "Marinara": {
-
-    image:
-      "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=1000&q=90",
-
-    description:
-      "San Marzano tomato, garlic, oregano and extra virgin olive oil.",
-
-    price:
-      "€7.50"
-
+  {
+    image: "menu-drinks.jpg",
+    alt: "SENZO drinks menu"
   },
 
+  {
+    image: "menu-desserts.jpg",
+    alt: "SENZO desserts menu"
+  }
 
-  "Diavola": {
+];
 
-    image:
-      "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=1000&q=90",
 
-    description:
-      "Tomato, mozzarella and spicy Italian salami.",
 
-    price:
-      "€10.50"
+/* =========================================
+   CURRENT PAGE
+========================================= */
 
-  },
 
+let currentPage = 0;
 
-  "Quattro Formaggi": {
 
-    image:
-      "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=1000&q=90",
 
-    description:
-      "A rich combination of four Italian cheeses.",
+/* =========================================
+   TOUCH / SWIPE
+========================================= */
 
-    price:
-      "€11"
 
-  },
+let touchStartX = 0;
 
+let touchStartY = 0;
 
-  "Capricciosa": {
 
-    image:
-      "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=90",
 
-    description:
-      "Tomato, mozzarella, ham, mushrooms, artichokes and olives.",
+/* =========================================
+   ELEMENTS
+========================================= */
 
-    price:
-      "€11"
 
-  },
+const page =
+  document.getElementById("page");
 
 
-  "Napoli": {
+const menuImage =
+  document.getElementById("menuImage");
 
-    image:
-      "https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1000&q=90",
 
-    description:
-      "Tomato, mozzarella, anchovies, capers and olives.",
+const previousButton =
+  document.getElementById("prev");
 
-    price:
-      "€10.50"
 
-  },
+const nextButton =
+  document.getElementById("next");
 
 
-  "Prosciutto e Funghi": {
+const pageNumber =
+  document.getElementById("pageNumber");
 
-    image:
-      "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=1000&q=90",
 
-    description:
-      "Tomato, mozzarella, Italian ham and mushrooms.",
+const dots =
+  document.querySelectorAll(".dot");
 
-    price:
-      "€10.50"
 
-  },
+const bookStage =
+  document.getElementById("bookStage");
 
 
-  "Burrata e Crudo": {
+const hint =
+  document.getElementById("hint");
 
-    image:
-      "https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1000&q=90",
 
-    description:
-      "Creamy burrata and delicate prosciutto crudo.",
 
-    price:
-      "€14.50"
+/* =========================================
+   SHOW PAGE
+========================================= */
 
-  },
 
+function showPage(direction = 1) {
 
-  "Mortadella e Pistacchio": {
 
-    image:
-      "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=90",
+  /*
+    Remove previous animation
+  */
 
-    description:
-      "Italian mortadella, pistachio and creamy cheese.",
+  page.classList.remove(
+    "turn-next",
+    "turn-prev"
+  );
 
-    price:
-      "€14"
 
-  },
+  /*
+    Force browser to restart animation
+  */
 
+  void page.offsetWidth;
 
-  "Salsiccia e Friarielli": {
 
-    image:
-      "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=1000&q=90",
+  /*
+    Add correct direction
+  */
 
-    description:
-      "Italian sausage and traditional friarielli greens.",
+  if (direction > 0) {
 
-    price:
-      "€13"
+    page.classList.add("turn-next");
 
-  },
+  } else {
 
-
-  "Bosco al Tartufo": {
-
-    image:
-      "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=1000&q=90",
-
-    description:
-      "Mushrooms and fragrant Italian truffle.",
-
-    price:
-      "€14.50"
-
-  },
-
-
-  "'Nduja e Burrata": {
-
-    image:
-      "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=1000&q=90",
-
-    description:
-      "Spicy Calabrian 'nduja balanced with creamy burrata.",
-
-    price:
-      "€14"
-
-  },
-
-
-  "Zucca e Gorgonzola": {
-
-    image:
-      "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=90",
-
-    description:
-      "Sweet pumpkin and bold Gorgonzola.",
-
-    price:
-      "€12.50"
-
-  },
-
-
-  "Pesto e Stracciatella": {
-
-    image:
-      "https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1000&q=90",
-
-    description:
-      "Fresh pesto and delicate stracciatella.",
-
-    price:
-      "€12.50"
+    page.classList.add("turn-prev");
 
   }
 
-};
+
+  /*
+    Change image
+  */
+
+  menuImage.src =
+    pages[currentPage].image;
+
+
+  menuImage.alt =
+    pages[currentPage].alt;
+
+
+  /*
+    Page number
+  */
+
+  pageNumber.textContent =
+
+    String(currentPage + 1)
+      .padStart(2, "0")
+
+    + " / " +
+
+    String(pages.length)
+      .padStart(2, "0");
+
+
+  /*
+    Active dot
+  */
+
+  dots.forEach(
+    (dot, index) => {
+
+      dot.classList.toggle(
+        "active",
+        index === currentPage
+      );
+
+    }
+  );
+
+
+  /*
+    Disable arrows at beginning/end
+  */
+
+  previousButton.disabled =
+    currentPage === 0;
+
+
+  nextButton.disabled =
+    currentPage === pages.length - 1;
+
+
+  /*
+    Mobile instruction
+  */
+
+  if (window.innerWidth <= 700) {
+
+    hint.textContent =
+      "SWIPE OR TAP THE ARROWS";
+
+  } else {
+
+    hint.textContent =
+      "USE THE ARROWS TO TURN THE MENU";
+
+  }
+
+}
 
 
 
-/* =========================
-   PIZZA DETAIL
-========================= */
-
-const pizzaButtons =
-  document.querySelectorAll(".pizza-dish");
+/* =========================================
+   NEXT PAGE
+========================================= */
 
 
-const detail =
-  document.getElementById("pizza-detail");
+function nextPage() {
 
-
-const closeDetail =
-  document.getElementById("close-detail");
-
-
-const detailName =
-  document.getElementById("detail-name");
-
-
-const detailImage =
-  document.getElementById("detail-image");
-
-
-const detailDescription =
-  document.getElementById("detail-description");
-
-
-const detailPrice =
-  document.getElementById("detail-price");
-
-
-
-pizzaButtons.forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    const pizzaName =
-      button.dataset.pizza;
-
-
-    const pizza =
-      pizzas[pizzaName];
-
-
-    if (!pizza) return;
-
-
-    detailName.textContent =
-      pizzaName;
-
-
-    detailImage.src =
-      pizza.image;
-
-
-    detailImage.alt =
-      pizzaName;
-
-
-    detailDescription.textContent =
-      pizza.description;
-
-
-    detailPrice.textContent =
-      pizza.price;
-
-
-    detail.classList.add("open");
-
-
-    document.body.style.overflow =
-      "hidden";
-
-  });
-
-});
-
-
-
-/* =========================
-   CLOSE DETAIL
-========================= */
-
-closeDetail.addEventListener("click", () => {
-
-  detail.classList.remove("open");
-
-  document.body.style.overflow =
-    "";
-
-});
-
-
-/* ESC KEY */
-
-document.addEventListener("keydown", event => {
 
   if (
-    event.key === "Escape" &&
-    detail.classList.contains("open")
+    currentPage <
+    pages.length - 1
   ) {
 
-    detail.classList.remove("open");
+    currentPage++;
 
-    document.body.style.overflow =
-      "";
+    showPage(1);
 
   }
 
-});
+}
+
+
+
+/* =========================================
+   PREVIOUS PAGE
+========================================= */
+
+
+function previousPage() {
+
+
+  if (
+    currentPage > 0
+  ) {
+
+    currentPage--;
+
+    showPage(-1);
+
+  }
+
+}
+
+
+
+/* =========================================
+   ARROW BUTTONS
+========================================= */
+
+
+nextButton.addEventListener(
+  "click",
+  nextPage
+);
+
+
+previousButton.addEventListener(
+  "click",
+  previousPage
+);
+
+
+
+/* =========================================
+   DOT NAVIGATION
+========================================= */
+
+
+dots.forEach(
+  (dot) => {
+
+    dot.addEventListener(
+      "click",
+      () => {
+
+        const targetPage =
+          Number(
+            dot.dataset.page
+          );
+
+
+        if (
+          targetPage ===
+          currentPage
+        ) {
+
+          return;
+
+        }
+
+
+        const direction =
+          targetPage >
+          currentPage
+            ? 1
+            : -1;
+
+
+        currentPage =
+          targetPage;
+
+
+        showPage(direction);
+
+      }
+    );
+
+  }
+);
+
+
+
+/* =========================================
+   KEYBOARD
+========================================= */
+
+
+document.addEventListener(
+  "keydown",
+  (event) => {
+
+
+    if (
+      event.key === "ArrowRight"
+    ) {
+
+      nextPage();
+
+    }
+
+
+    if (
+      event.key === "ArrowLeft"
+    ) {
+
+      previousPage();
+
+    }
+
+  }
+);
+
+
+
+/* =========================================
+   TOUCH START
+========================================= */
+
+
+bookStage.addEventListener(
+
+  "touchstart",
+
+  (event) => {
+
+    const touch =
+      event.changedTouches[0];
+
+
+    touchStartX =
+      touch.clientX;
+
+
+    touchStartY =
+      touch.clientY;
+
+  },
+
+  {
+    passive: true
+  }
+
+);
+
+
+
+/* =========================================
+   TOUCH END
+========================================= */
+
+
+bookStage.addEventListener(
+
+  "touchend",
+
+  (event) => {
+
+
+    const touch =
+      event.changedTouches[0];
+
+
+    const differenceX =
+      touch.clientX -
+      touchStartX;
+
+
+    const differenceY =
+      touch.clientY -
+      touchStartY;
+
+
+    /*
+      Ignore vertical scrolling
+    */
+
+    if (
+      Math.abs(differenceX) <
+      45
+    ) {
+
+      return;
+
+    }
+
+
+    if (
+      Math.abs(differenceX) <
+      Math.abs(differenceY)
+    ) {
+
+      return;
+
+    }
+
+
+    /*
+      Swipe left = next
+    */
+
+    if (
+      differenceX < 0
+    ) {
+
+      nextPage();
+
+    }
+
+
+    /*
+      Swipe right = previous
+    */
+
+    else {
+
+      previousPage();
+
+    }
+
+  },
+
+  {
+    passive: true
+  }
+
+);
+
+
+
+/* =========================================
+   INITIALIZE
+========================================= */
+
+
+showPage(1);
