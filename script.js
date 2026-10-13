@@ -40,7 +40,7 @@ const hint = document.getElementById("hint");
 const foodDetails = {
   margherita: {
     name: "Margherita",
-    image: "margherita.png",
+    image: "https://raw.githubusercontent.com/dimitragilova-perfecto/senzo-menu/main/margherita.png",
     description:
       "San Marzano tomato sauce, Fior di Latte mozzarella, fresh basil and extra virgin olive oil.",
     price: "€7.50"
@@ -48,7 +48,7 @@ const foodDetails = {
 
   marinara: {
     name: "Marinara",
-    image: "marinara.png",
+    image: "https://raw.githubusercontent.com/dimitragilova-perfecto/senzo-menu/main/marinara.png",
     description:
       "San Marzano tomato sauce, garlic, oregano and extra virgin olive oil. No cheese.",
     price: "€7.50"
@@ -56,7 +56,7 @@ const foodDetails = {
 
   diavola: {
     name: "Diavola",
-    image: "diavola.png",
+    image: "https://raw.githubusercontent.com/dimitragilova-perfecto/senzo-menu/main/diavola.png",
     description:
       "Tomato sauce, Fior di Latte mozzarella, spicy Italian salami, oregano and olive oil.",
     price: "€10.50"
@@ -64,7 +64,7 @@ const foodDetails = {
 
   quattro: {
     name: "Quattro Formaggi",
-    image: "quattro-formaggi.png",
+    image: "https://raw.githubusercontent.com/dimitragilova-perfecto/senzo-menu/main/quattro-formaggi.png",
     description:
       "Fior di Latte, Gorgonzola, Taleggio and Parmigiano Reggiano.",
     price: "€11.00"
@@ -72,7 +72,7 @@ const foodDetails = {
 
   capricciosa: {
     name: "Capricciosa",
-    image: "capricciosa.png",
+    image: "https://raw.githubusercontent.com/dimitragilova-perfecto/senzo-menu/main/capricciosa.png",
     description:
       "Tomato sauce, mozzarella, cooked ham, mushrooms, artichokes and olives.",
     price: "€11.00"
@@ -80,7 +80,7 @@ const foodDetails = {
 
   napoli: {
     name: "Napoli",
-    image: "napoli.png",
+    image: "https://raw.githubusercontent.com/dimitragilova-perfecto/senzo-menu/main/napoli.png",
     description:
       "Tomato sauce, mozzarella, anchovies, capers, olives and oregano.",
     price: "€10.50"
@@ -88,7 +88,7 @@ const foodDetails = {
 
   prosciutto: {
     name: "Prosciutto e Funghi",
-    image: "prosciutto-funghi.png",
+    image: "https://raw.githubusercontent.com/dimitragilova-perfecto/senzo-menu/main/prosciutto-funghi.png",
     description:
       "Tomato sauce, Fior di Latte mozzarella, cooked ham and mushrooms.",
     price: "€10.50"
@@ -365,11 +365,11 @@ pizzaPositions.forEach(item => {
 // OPEN AND CLOSE FOOD DETAILS
 // ==========================================
 
-const foodModalImage = document.getElementById("foodModalImage");
-const foodModalTitle = document.getElementById("foodModalTitle");
+const foodModalImage = modal.querySelector("#foodModalImage");
+const foodModalTitle = modal.querySelector("#foodModalTitle");
 const foodModalDescription =
-  document.getElementById("foodModalDescription");
-const foodModalPrice = document.getElementById("foodModalPrice");
+  modal.querySelector("#foodModalDescription");
+const foodModalPrice = modal.querySelector("#foodModalPrice");
 
 function openFoodModal(foodKey) {
   const food = foodDetails[foodKey];
@@ -396,7 +396,7 @@ function closeFoodModal() {
   document.body.style.overflow = "";
 }
 
-document.getElementById("closeFoodModal")
+modal.querySelector("#closeFoodModal")
   .addEventListener("click", closeFoodModal);
 
 modal.addEventListener("click", event => {
