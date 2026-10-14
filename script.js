@@ -15,6 +15,10 @@ const pages = [
   {
     image: "https://raw.githubusercontent.com/dimitragilova-perfecto/senzo-menu/main/deserts.jpeg",
     alt: "SENZO desserts menu"
+  },
+    {
+    image: "https://raw.githubusercontent.com/dimitragilova-perfecto/senzo-menu/main/wine.jpeg",
+    alt: "SENZO wine menu"
   }
 ];
 
