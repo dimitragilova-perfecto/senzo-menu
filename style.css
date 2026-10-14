@@ -685,3 +685,23 @@ body {
   }
 }
 }
+
+/* Subtle interactive pizza highlights */
+.pizza-hotspot {
+  position: absolute;
+  border: 1px solid rgba(213, 125, 54, 0.65);
+  background: rgba(236, 157, 79, 0.13);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.pizza-hotspot:hover {
+  background: rgba(236, 157, 79, 0.3);
+  border-color: rgba(190, 103, 37, 0.9);
+}
+
+.pizza-hotspot:focus-visible {
+  outline: 2px solid #b96d35;
+  outline-offset: 2px;
+}
