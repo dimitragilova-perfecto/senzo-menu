@@ -80,27 +80,18 @@ body {
 ========================================= */
 
 
+
 .book-stage {
-
   position: relative;
-
-  width: min(
-    78vh,
-    88vw,
-    620px
-  );
-
+  width: min(620px, 78vh, calc(100vw - 160px));
   aspect-ratio: 2 / 3;
-
+  flex: 0 0 auto;
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   perspective: 1800px;
-
 }
+
 
 
 /* =========================================
@@ -154,21 +145,17 @@ body {
 
 /* actual menu image */
 
+
 .page img {
-
   width: 100%;
-
   height: 100%;
-
   display: block;
-
-  object-fit: cover;
-
+  object-fit: contain;
+  object-position: center;
   user-select: none;
-
   -webkit-user-drag: none;
-
 }
+
 
 
 /* =========================================
@@ -577,6 +564,7 @@ body {
     animation: none;
 
   }
+}
 
    /* ==================================
    SENZO FOOD DETAILS POPUP
